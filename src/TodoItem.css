@@ -1,0 +1,61 @@
+.TodoItem {
+  display: flex;
+  justify-content: center;
+  width: 500px;
+  padding: 1em;
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  border-radius: 5px;
+  margin: 0 auto;
+  color: #ead7d1;
+  font-size: 14pt;
+  position: relative;
+}
+
+.TodoItem + .TodoItem {
+  margin-top: 1em;
+}
+
+.TodoItem--Status {
+  display: flex;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 20px;
+}
+
+.not-completed {
+  background-color: #e92337;
+}
+
+.completed {
+  background-color: #95e768;
+}
+
+.TodoItem--Todo {
+  font-weight: 900;
+  width: calc(500px - 20px - 40px);
+  padding-left: 10px;
+}
+
+.TodoItem--Delete {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  top: 0px;
+  right: 0px;
+  font-weight: 900;
+  font-size: 14pt;
+  transition: background-color 500ms ease, color 500ms ease;
+}
+
+.TodoItem--Delete:hover {
+  transition: background-color 450ms ease, color 450ms ease;
+  background-color: #ead7d1;
+  color: #414046;
+  cursor: pointer;
+}

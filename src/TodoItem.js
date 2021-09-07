@@ -1,9 +1,16 @@
+import "./TodoItem.css";
+
 function TodoItem({ completed, todo }) {
   return (
-    <div>
-      <p>{completed ? "Completado" : "Pendiente"}</p>
-      <p>{todo}</p>
-      <p>Borrar todo</p>
+    <div className="TodoItem">
+      <span
+        className={`
+          TodoItem--Status
+          ${completed ? "completed" : "not-completed"}
+        `}
+      />
+      <p className="TodoItem--Todo">{todo}</p>
+      <p className="TodoItem--Delete">X</p>
     </div>
   );
 }

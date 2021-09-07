@@ -1,5 +1,13 @@
+import "./TodoSearch.css";
+
 function TodoSearch() {
-  return <input type="text" placeholder="Escribe tu TODO mano 🛹" />;
+  return (
+    <input
+      className="TodoSearch--input"
+      type="text"
+      placeholder="Buscar tarea"
+    />
+  );
 }
 
 export { TodoSearch };

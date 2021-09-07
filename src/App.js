@@ -10,7 +10,10 @@ import { CreateTodoButton } from "./CreateTodoButton";
 const todos = [
   { todo: "Este es mi primer todo", completed: false },
   { todo: "Este es mi segundo todo", completed: true },
-  { todo: "Este es mi tercer todo", completed: false },
+  {
+    todo: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem et doloribus doloremque provident aperiam similique, accusantium commodi dolor molestias iusto ratione repellendus maiores natus animi rerum asperiores facilis assumenda itaque.",
+    completed: false,
+  },
 ];
 
 function App() {
