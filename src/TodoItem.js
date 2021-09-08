@@ -1,6 +1,13 @@
 import "./TodoItem.css";
 
 function TodoItem({ completed, todo }) {
+  const onComplete = () => {
+    alert("Tarea completada");
+  };
+  const onDelete = () => {
+    alert("Tarea eliminada");
+  };
+
   return (
     <div className="TodoItem">
       <span
@@ -8,9 +15,12 @@ function TodoItem({ completed, todo }) {
           TodoItem--Status
           ${completed ? "completed" : "not-completed"}
         `}
+        onClick={onComplete}
       />
       <p className="TodoItem--Todo">{todo}</p>
-      <p className="TodoItem--Delete">X</p>
+      <span className="TodoItem--Delete" onClick={onDelete}>
+        X
+      </span>
     </div>
   );
 }
