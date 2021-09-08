@@ -17,7 +17,7 @@ function TodoItem({ completed, todo }) {
         `}
         onClick={onComplete}
       />
-      <p className="TodoItem--Todo">{todo}</p>
+      <p className={`TodoItem--Todo ${completed && "underline"}`}>{todo}</p>
       <span className="TodoItem--Delete" onClick={onDelete}>
         X
       </span>

@@ -38,6 +38,10 @@
   background-color: #95e768;
 }
 
+.underline {
+  text-decoration: 3px line-through #1f1a38;
+}
+
 .TodoItem--Todo {
   font-weight: 900;
   width: calc(500px - 20px - 40px);
@@ -61,6 +65,6 @@
 .TodoItem--Delete:hover {
   transition: background-color 450ms ease, color 450ms ease;
   background-color: #ead7d1;
-  color: #414046;
+  color: #1f1a38;
   cursor: pointer;
 }
