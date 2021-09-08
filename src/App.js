@@ -38,8 +38,9 @@ function App() {
   // Marcar TODO como completado
   const completeTodo = (id) => {
     const todoIndex = todos.findIndex(({ _id }) => _id === id);
-    todos[todoIndex].completed = !todos[todoIndex].completed;
-    setTodos([...todos]);
+    const updatedTodos = [...todos];
+    updatedTodos[todoIndex].completed = !todos[todoIndex].completed;
+    setTodos(updatedTodos);
   };
   return (
     <>
