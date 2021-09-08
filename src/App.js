@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 //import "./App.css";
 // custom components
 import { TodoCounter } from "./TodoCounter";
@@ -7,8 +9,9 @@ import { TodoItem } from "./TodoItem";
 import { CreateTodoButton } from "./CreateTodoButton";
 
 // mook todos
-const todos = [
+const mookTodos = [
   { todo: "Este es mi primer todo", completed: false },
+  { todo: "Este es mi segundo todo", completed: true },
   { todo: "Este es mi segundo todo", completed: true },
   {
     todo: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem et doloribus doloremque provident aperiam similique, accusantium commodi dolor molestias iusto ratione repellendus maiores natus animi rerum asperiores facilis assumenda itaque.",
@@ -17,10 +20,16 @@ const todos = [
 ];
 
 function App() {
+  const [todos] = useState(mookTodos);
+  const [searchValue, setSearchValue] = useState("");
+
+  const completedTodos = todos.filter((todo) => todo.completed).length;
+  const totalTodos = todos.length;
+
   return (
     <>
-      <TodoCounter />
-      <TodoSearch />
+      <TodoCounter completed={completedTodos} total={totalTodos} />
+      <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
       <TodoList>
         {todos.map((todo, key) => (
           <TodoItem key={key} {...todo} />
