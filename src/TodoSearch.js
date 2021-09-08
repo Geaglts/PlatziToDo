@@ -1,8 +1,11 @@
+import { useState } from "react";
 import "./TodoSearch.css";
 
 function TodoSearch() {
-  const onChangeInputValue = (evt) => {
-    console.log(evt.target.value);
+  const [searchValue, setSearchValue] = useState("");
+
+  const onChangeSearchValue = (evt) => {
+    setSearchValue(evt.target.value);
   };
 
   return (
@@ -10,7 +13,8 @@ function TodoSearch() {
       className="TodoSearch--input"
       type="text"
       placeholder="Buscar tarea"
-      onChange={onChangeInputValue}
+      onChange={onChangeSearchValue}
+      value={searchValue}
     />
   );
 }
