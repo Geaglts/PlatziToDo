@@ -1,12 +1,6 @@
 import { useState } from "react";
 
-//import "./App.css";
-// custom components
-import { TodoCounter } from "./TodoCounter";
-import { TodoSearch } from "./TodoSearch";
-import { TodoList } from "./TodoList";
-import { TodoItem } from "./TodoItem";
-import { CreateTodoButton } from "./CreateTodoButton";
+import { AppUI } from "./AppUI";
 
 // mook todos
 const mookTodos = [
@@ -43,21 +37,16 @@ function App() {
     setTodos(updatedTodos);
   };
   return (
-    <>
-      <TodoCounter completed={completedTodos} total={totalTodos} />
-      <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
-      <TodoList>
-        {todos.filter(searchTodo(searchValue)).map((todo, key) => (
-          <TodoItem
-            key={todo._id}
-            {...todo}
-            deleteTodo={deleteTodo}
-            completeTodo={completeTodo}
-          />
-        ))}
-      </TodoList>
-      <CreateTodoButton />
-    </>
+    <AppUI
+      todos={todos}
+      searchTodo={searchTodo}
+      searchValue={searchValue}
+      setSearchValue={setSearchValue}
+      completedTodos={completedTodos}
+      totalTodos={totalTodos}
+      deleteTodo={deleteTodo}
+      completeTodo={completeTodo}
+    />
   );
 }
 
