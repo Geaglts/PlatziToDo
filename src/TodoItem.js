@@ -1,8 +1,8 @@
 import "./TodoItem.css";
 
-function TodoItem({ _id, completed, todo, deleteTodo }) {
+function TodoItem({ _id, completed, todo, deleteTodo, completeTodo }) {
   const onComplete = () => {
-    alert("Tarea completada");
+    completeTodo(_id);
   };
   const onDelete = () => {
     deleteTodo(_id);

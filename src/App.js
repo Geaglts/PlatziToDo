@@ -36,8 +36,10 @@ function App() {
   };
 
   // Marcar TODO como completado
-  const finishTodo = () => {
-    console.log("Este TODO se ha eliminado D:");
+  const completeTodo = (id) => {
+    const todoIndex = todos.findIndex(({ _id }) => _id === id);
+    todos[todoIndex].completed = !todos[todoIndex].completed;
+    setTodos([...todos]);
   };
   return (
     <>
@@ -45,7 +47,12 @@ function App() {
       <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
       <TodoList>
         {todos.filter(searchTodo(searchValue)).map((todo, key) => (
-          <TodoItem key={todo._id} {...todo} deleteTodo={deleteTodo} />
+          <TodoItem
+            key={todo._id}
+            {...todo}
+            deleteTodo={deleteTodo}
+            completeTodo={completeTodo}
+          />
         ))}
       </TodoList>
       <CreateTodoButton />
