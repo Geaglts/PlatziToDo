@@ -1,11 +1,11 @@
 import "./TodoItem.css";
 
-function TodoItem({ completed, todo }) {
+function TodoItem({ _id, completed, todo, deleteTodo }) {
   const onComplete = () => {
     alert("Tarea completada");
   };
   const onDelete = () => {
-    alert("Tarea eliminada");
+    deleteTodo(_id);
   };
 
   return (
