@@ -19,6 +19,12 @@ const mookTodos = [
   },
 ];
 
+const searchTodo =
+  (searchValue) =>
+  ({ todo }) => {
+    return String(todo).toLowerCase().includes(searchValue.toLowerCase());
+  };
+
 function App() {
   const [todos] = useState(mookTodos);
   const [searchValue, setSearchValue] = useState("");
@@ -31,7 +37,7 @@ function App() {
       <TodoCounter completed={completedTodos} total={totalTodos} />
       <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
       <TodoList>
-        {todos.map((todo, key) => (
+        {todos.filter(searchTodo(searchValue)).map((todo, key) => (
           <TodoItem key={key} {...todo} />
         ))}
       </TodoList>
