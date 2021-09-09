@@ -18,28 +18,34 @@ const deafultTodo = {
   completed: false,
 };
 
-function App() {
-  const localStorageTodos = localStorage.getItem(TODOS_STORAGE);
-  let parsedTodos;
+function useLocalStorage(itemName, initialState) {
+  const localStorageValue = localStorage.getItem(itemName);
+  let parsedValue;
 
-  if (!localStorageTodos) {
-    localStorage.setItem(TODOS_STORAGE, JSON.stringify([deafultTodo]));
-    parsedTodos = [deafultTodo];
+  if (!localStorageValue) {
+    localStorage.setItem(itemName, JSON.stringify(initialState));
+    parsedValue = initialState;
   } else {
-    parsedTodos = JSON.parse(localStorageTodos);
+    parsedValue = JSON.parse(localStorageValue);
   }
 
-  const [todos, setTodos] = useState(parsedTodos);
+  const [value, setValues] = useState(parsedValue);
+
+  const saveValue = (newValue) => {
+    const stringifiedValue = JSON.stringify(newValue);
+    localStorage.setItem(itemName, stringifiedValue);
+    setValues(newValue);
+  };
+
+  return [value, saveValue];
+}
+
+function App() {
+  const [todos, saveTodos] = useLocalStorage(TODOS_STORAGE, [deafultTodo]);
   const [searchValue, setSearchValue] = useState("");
 
   const completedTodos = todos.filter((todo) => todo.completed).length;
   const totalTodos = todos.length;
-
-  const saveTodos = (newTodos) => {
-    const stringifiedTodos = JSON.stringify(newTodos);
-    localStorage.setItem(TODOS_STORAGE, stringifiedTodos);
-    setTodos(newTodos);
-  };
 
   // Eliminar TODO
   const deleteTodo = (id) => {
