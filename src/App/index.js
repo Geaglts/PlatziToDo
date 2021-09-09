@@ -1,14 +1,7 @@
 import { useState } from "react";
 
 import { AppUI } from "./AppUI";
-
-// mook todos
-const mookTodos = [
-  { _id: "1", todo: "Este es mi primer todo", completed: false },
-  { _id: "2", todo: "Este es mi segundo todo", completed: true },
-  { _id: "3", todo: "Este es mi segundo todo", completed: false },
-  { _id: "4", todo: "Este es mi tercer todo", completed: true },
-];
+import { _id } from "../utils/_id";
 
 const searchTodo =
   (searchValue) =>
@@ -16,17 +9,42 @@ const searchTodo =
     return String(todo).toLowerCase().includes(searchValue.toLowerCase());
   };
 
+const TODOS_STORAGE = "TODOS_V1";
+
+// El TODO se crea si aun no se ha creado ninguno
+const deafultTodo = {
+  _id,
+  todo: "Soy tu primer todo :D, me puedes eliminar si gustas.",
+  completed: false,
+};
+
 function App() {
-  const [todos, setTodos] = useState(mookTodos);
+  const localStorageTodos = localStorage.getItem(TODOS_STORAGE);
+  let parsedTodos;
+
+  if (!localStorageTodos) {
+    localStorage.setItem(TODOS_STORAGE, JSON.stringify([deafultTodo]));
+    parsedTodos = [deafultTodo];
+  } else {
+    parsedTodos = JSON.parse(localStorageTodos);
+  }
+
+  const [todos, setTodos] = useState(parsedTodos);
   const [searchValue, setSearchValue] = useState("");
 
   const completedTodos = todos.filter((todo) => todo.completed).length;
   const totalTodos = todos.length;
 
+  const saveTodos = (newTodos) => {
+    const stringifiedTodos = JSON.stringify(newTodos);
+    localStorage.setItem(TODOS_STORAGE, stringifiedTodos);
+    setTodos(newTodos);
+  };
+
   // Eliminar TODO
   const deleteTodo = (id) => {
     const filteredTodos = todos.filter(({ _id }) => _id !== id);
-    setTodos(filteredTodos);
+    saveTodos(filteredTodos);
   };
 
   // Marcar TODO como completado
@@ -34,7 +52,7 @@ function App() {
     const todoIndex = todos.findIndex(({ _id }) => _id === id);
     const updatedTodos = [...todos];
     updatedTodos[todoIndex].completed = !todos[todoIndex].completed;
-    setTodos(updatedTodos);
+    saveTodos(updatedTodos);
   };
   return (
     <AppUI
