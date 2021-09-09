@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { _id } from "../utils/_id";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { STORAGE_NAMES } from "../Constants/storageNames";
 
@@ -20,6 +21,17 @@ function TodoProvider(props) {
   // Cambia el estado del modal
   const toggleModal = () => {
     setModalState(!modalState);
+  };
+
+  // Agreagar un nuevo TODO
+  const addTodo = (todoText) => {
+    try {
+      const generatedId = _id();
+      const newTodo = { todo: todoText, completed: false, _id: generatedId };
+      saveTodos([...todos, newTodo]);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   // Eliminar TODO
@@ -51,6 +63,7 @@ function TodoProvider(props) {
         setSearchValue,
         modalState,
         toggleModal,
+        addTodo,
       }}
     >
       {props.children}
