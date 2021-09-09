@@ -12,9 +12,15 @@ function TodoProvider(props) {
     error,
   } = useLocalStorage(STORAGE_NAMES.TODOS, []);
   const [searchValue, setSearchValue] = useState("");
+  const [modalState, setModalState] = useState(false);
 
   const completedTodos = todos.filter((todo) => todo.completed).length;
   const totalTodos = todos.length;
+
+  // Cambia el estado del modal
+  const toggleModal = () => {
+    setModalState(!modalState);
+  };
 
   // Eliminar TODO
   const deleteTodo = (id) => {
@@ -43,6 +49,8 @@ function TodoProvider(props) {
         totalTodos,
         searchValue,
         setSearchValue,
+        modalState,
+        toggleModal,
       }}
     >
       {props.children}

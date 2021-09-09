@@ -4,16 +4,26 @@ import { TodoCounter } from "../TodoCounter";
 import { TodoSearch } from "../TodoSearch";
 import { TodoList } from "../TodoList";
 import { TodoItem } from "../TodoItem";
+import { TodoForm } from "../TodoForm";
 import { CreateTodoButton } from "../CreateTodoButton";
 import { TodoContext } from "../TodoContext";
+import { Modal } from "../Modal";
 
 const P = ({ message }) => {
   return <p style={{ color: "white", textAlign: "center" }}>{message}</p>;
 };
 
 export const AppUI = ({ searchTodo }) => {
-  const { error, loading, todos, searchValue, deleteTodo, completeTodo } =
-    useContext(TodoContext);
+  const {
+    error,
+    loading,
+    todos,
+    searchValue,
+    deleteTodo,
+    completeTodo,
+    modalState,
+    toggleModal,
+  } = useContext(TodoContext);
 
   return (
     <>
@@ -34,8 +44,10 @@ export const AppUI = ({ searchTodo }) => {
           />
         ))}
       </TodoList>
-      )
-      <CreateTodoButton />
+      <Modal state={modalState} toggleModal={toggleModal}>
+        <TodoForm />
+      </Modal>
+      <CreateTodoButton onClick={toggleModal} />
     </>
   );
 };

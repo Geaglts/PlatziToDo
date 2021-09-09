@@ -1,15 +1,8 @@
 import "./CreateTodoButton.css";
 
-function CreateTodoButton() {
-  const onClickButton = (msg) => {
-    alert(msg);
-  };
-
+function CreateTodoButton({ onClick }) {
   return (
-    <button
-      className="CreateTodoButton"
-      onClick={() => onClickButton("Modal activo")}
-    >
+    <button className="CreateTodoButton" onClick={onClick}>
       +
     </button>
   );
