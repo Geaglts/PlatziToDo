@@ -3,7 +3,7 @@ import { useState } from "react";
 import { AppUI } from "./AppUI";
 
 import { useLocalStorage } from "../hooks/useLocalStorage";
-import { TODOS_STORAGE, deafultTodo } from "./defaultValues";
+import { TODOS_STORAGE } from "./defaultValues";
 
 // Función para filtrar los TODOs
 const searchTodo =
@@ -13,7 +13,12 @@ const searchTodo =
   };
 
 function App() {
-  const [todos, saveTodos] = useLocalStorage(TODOS_STORAGE, [deafultTodo]);
+  const {
+    value: todos,
+    saveValue: saveTodos,
+    loading,
+    error,
+  } = useLocalStorage(TODOS_STORAGE, []);
   const [searchValue, setSearchValue] = useState("");
 
   const completedTodos = todos.filter((todo) => todo.completed).length;
@@ -35,6 +40,8 @@ function App() {
 
   return (
     <AppUI
+      loading={loading}
+      error={error}
       todos={todos}
       searchTodo={searchTodo}
       searchValue={searchValue}
