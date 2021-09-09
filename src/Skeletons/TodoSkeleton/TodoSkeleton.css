@@ -1,0 +1,71 @@
+.TodoSkeleton {
+  width: 500px;
+  height: 60px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 5px 1px rgba(234, 215, 209, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.TodoSkeleton + .TodoSkeleton {
+  margin-top: 10px;
+}
+
+.TodoSkeleton__Status {
+  height: 100%;
+  width: 30px;
+  animation: loading 20s infinite linear forwards;
+  background: #f6f7f8;
+  background: linear-gradient(to right, #eeeeee 10%, #dddddd 90%);
+}
+
+.TodoSkeleton__Text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 410px;
+}
+
+.TodoSkeleton__Text > p {
+  width: 380px;
+  height: 9px;
+  background-color: red;
+  margin: 3px;
+  border-radius: 5px;
+  animation: loading 3s infinite linear forwards;
+  background: #f6f7f8;
+  background: linear-gradient(to right, #eeeeee 10%, #dddddd 90%);
+}
+
+.TodoSkeleton__Close {
+  display: flex;
+  align-items: flex-start;
+  height: 100%;
+}
+
+.TodoSkeleton__Close > button {
+  font-size: 14pt;
+  font-weight: 900;
+  border: none;
+  width: 30px;
+  height: 30px;
+  color: white;
+  animation: loading 20s infinite linear forwards;
+  background: #f6f7f8;
+  background: linear-gradient(100deg, #eeeeee 10%, #dddddd 90%);
+}
+
+/* ANIMATIONS */
+@keyframes loading {
+  from {
+    background-position: -769px 0;
+  }
+  to {
+    background-position: 769px 0;
+  }
+}

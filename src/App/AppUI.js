@@ -9,6 +9,9 @@ import { CreateTodoButton } from "../CreateTodoButton";
 import { TodoContext } from "../TodoContext";
 import { Modal } from "../Modal";
 
+// mook
+import { TodoSkeleton } from "../Skeletons/TodoSkeleton";
+
 const P = ({ message }) => {
   return <p style={{ color: "white", textAlign: "center" }}>{message}</p>;
 };
@@ -31,7 +34,8 @@ export const AppUI = ({ searchTodo }) => {
       <TodoSearch />
       <TodoList>
         {error && <P message="A ocurrido un error al cargar los todos" />}
-        {loading && <P message="Cargando los TODOs..." />}
+        {loading &&
+          new Array(3).fill().map((index, key) => <TodoSkeleton key={key} />)}
         {!loading && todos.length === 0 && (
           <P message="Crea tu primer TODO :D" />
         )}
