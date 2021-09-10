@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/PlatziToDo/static/css/main.62073f05.chunk.css",
+    "main.js": "/PlatziToDo/static/js/main.b40616f7.chunk.js",
+    "main.js.map": "/PlatziToDo/static/js/main.b40616f7.chunk.js.map",
+    "runtime-main.js": "/PlatziToDo/static/js/runtime-main.c90a9051.js",
+    "runtime-main.js.map": "/PlatziToDo/static/js/runtime-main.c90a9051.js.map",
+    "static/js/2.47198224.chunk.js": "/PlatziToDo/static/js/2.47198224.chunk.js",
+    "static/js/2.47198224.chunk.js.map": "/PlatziToDo/static/js/2.47198224.chunk.js.map",
+    "index.html": "/PlatziToDo/index.html",
+    "static/css/main.62073f05.chunk.css.map": "/PlatziToDo/static/css/main.62073f05.chunk.css.map",
+    "static/js/2.47198224.chunk.js.LICENSE.txt": "/PlatziToDo/static/js/2.47198224.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c90a9051.js",
+    "static/js/2.47198224.chunk.js",
+    "static/css/main.62073f05.chunk.css",
+    "static/js/main.b40616f7.chunk.js"
+  ]
+}
