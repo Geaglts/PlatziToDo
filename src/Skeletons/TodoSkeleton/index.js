@@ -8,6 +8,7 @@ function TodoSkeleton() {
         <p></p>
         <p></p>
         <p></p>
+        <p></p>
       </div>
       <div className="TodoSkeleton__Close">
         <button>x</button>
