@@ -6,8 +6,9 @@ function useLocalStorage(valueName, initialValue) {
   const [value, setValues] = useState(initialValue);
 
   useEffect(() => {
-    setTimeout(() => {
+    const timeOutId = setTimeout(() => {
       try {
+        // Obtiene los datos del estado local
         const localStorageValue = localStorage.getItem(valueName);
         let parsedValue;
 
@@ -24,8 +25,10 @@ function useLocalStorage(valueName, initialValue) {
         setError(error);
       }
     }, 1000);
+    return () => clearTimeout(timeOutId);
   });
 
+  // Guarda un valor en el estado local
   const saveValue = (newValue) => {
     try {
       const stringifiedValue = JSON.stringify(newValue);
