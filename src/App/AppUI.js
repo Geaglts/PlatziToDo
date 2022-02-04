@@ -1,5 +1,6 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
+import { TodoHeader } from "../TodoHeader";
 import { searchTodo } from "../utils/filterTodo";
 import { TodoCounter } from "../TodoCounter";
 import { TodoSearch } from "../TodoSearch";
@@ -22,17 +23,22 @@ export const AppUI = () => {
     error,
     loading,
     todos,
-    searchValue,
     deleteTodo,
     completeTodo,
     modalState,
     toggleModal,
+    totalTodos,
+    completedTodos,
   } = useContext(TodoContext);
+  const [searchedValue, setSearchedValue] = useState("");
 
   return (
     <>
-      <TodoCounter />
-      <TodoSearch />
+      {/* Ejemplo de composición de componentes */}
+      <TodoHeader>
+        <TodoCounter completed={completedTodos} total={totalTodos} />
+        <TodoSearch onChange={setSearchedValue} value={searchedValue} />
+      </TodoHeader>
       <TodoList>
         {error && <P message="A ocurrido un error al cargar los todos" />}
         {loading &&
@@ -40,7 +46,7 @@ export const AppUI = () => {
         {!loading && todos.length === 0 && (
           <P message="Crea tu primer TODO :D" />
         )}
-        {todos.filter(searchTodo(searchValue)).map((todo) => (
+        {todos.filter(searchTodo(searchedValue)).map((todo) => (
           <TodoItem
             key={todo._id}
             {...todo}

@@ -1,12 +1,8 @@
-import { useContext } from "react";
-import { TodoContext } from "../TodoContext";
 import "./TodoSearch.css";
 
-function TodoSearch() {
-  const { searchValue, setSearchValue } = useContext(TodoContext);
-
+function TodoSearch({ onChange, value }) {
   const onChangeSearchValue = (evt) => {
-    setSearchValue(evt.target.value);
+    onChange(evt.target.value);
   };
 
   return (
@@ -15,7 +11,7 @@ function TodoSearch() {
       type="text"
       placeholder="Buscar tarea"
       onChange={onChangeSearchValue}
-      value={searchValue}
+      value={value}
     />
   );
 }
