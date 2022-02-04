@@ -8,12 +8,12 @@
   border: none;
   font-weight: 300;
   margin-top: 1em;
-  color: #ead7d1;
-  background-color: #1f1a38;
+  color: #cfcfcf;
+  background-color: #30363b;
   box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
   padding: 10px 15px;
 }
 
 .TodoSearch--input::placeholder {
-  color: rgba(234, 215, 209, 0.6);
+  color: rgba(207, 207, 207, 0.6);
 }

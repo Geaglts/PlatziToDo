@@ -7,7 +7,7 @@
   cursor: pointer;
   font-size: 16pt;
   font-weight: 900;
-  background-color: #ead7d1;
+  background-color: #cfcfcf;
   color: #1f1a38;
   box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.2);
   margin: 0 auto;
@@ -15,7 +15,7 @@
 }
 
 .CreateTodoButton:hover {
-  color: #ead7d1;
-  background-color: #1f1a38;
+  color: #cfcfcf;
+  background-color: #30363b;
   transform: scale(1.1);
 }
