@@ -1,5 +1,6 @@
 import { useContext } from "react";
 
+import { searchTodo } from "../utils/filterTodo";
 import { TodoCounter } from "../TodoCounter";
 import { TodoSearch } from "../TodoSearch";
 import { TodoList } from "../TodoList";
@@ -16,7 +17,7 @@ const P = ({ message }) => {
   return <p style={{ color: "white", textAlign: "center" }}>{message}</p>;
 };
 
-export const AppUI = ({ searchTodo }) => {
+export const AppUI = () => {
   const {
     error,
     loading,
