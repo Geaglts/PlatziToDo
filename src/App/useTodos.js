@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { _id } from "../utils/_id";
 import { useLocalStorage } from "./useLocalStorage";
 import { STORAGE_NAMES } from "../Constants/storageNames";
+
+import { searchTodo } from "../utils/filterTodo";
 
 export function useTodos() {
   const {
@@ -12,9 +14,16 @@ export function useTodos() {
   } = useLocalStorage(STORAGE_NAMES.TODOS, []);
   const [searchValue, setSearchValue] = useState("");
   const [modalState, setModalState] = useState(false);
+  const [searchedTodos, setSearchedTodos] = useState([]);
 
   const completedTodos = todos.filter((todo) => todo.completed).length;
   const totalTodos = todos.length;
+
+  // Filtra los todos cuando cambia el estado del searchValue
+  useEffect(() => {
+    const filterTodosByName = todos.filter(searchTodo(searchValue));
+    setSearchedTodos(filterTodosByName);
+  }, [todos, searchValue]);
 
   // Cambia el estado del modal
   const toggleModal = () => {
@@ -54,6 +63,7 @@ export function useTodos() {
     totalTodos,
     searchValue,
     modalState,
+    searchedTodos,
     saveTodos,
     deleteTodo,
     completeTodo,

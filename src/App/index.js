@@ -1,6 +1,6 @@
 import { useTodos } from "./useTodos";
 
-import { searchTodo } from "../utils/filterTodo";
+import { newArray } from "../utils/arrays";
 
 import { TodoHeader } from "../TodoHeader";
 import { TodoCounter } from "../TodoCounter";
@@ -20,15 +20,15 @@ function App() {
   const {
     error,
     loading,
-    todos,
     totalTodos,
     completedTodos,
+    modalState,
+    searchValue,
+    searchedTodos,
     deleteTodo,
     completeTodo,
     addTodo,
-    modalState,
     toggleModal,
-    searchValue,
     setSearchValue,
   } = useTodos();
 
@@ -42,11 +42,9 @@ function App() {
       <TodoList
         error={error}
         loading={loading}
-        todos={todos}
-        searchTodo={searchTodo}
-        searchValue={searchValue}
+        searchedTodos={searchedTodos}
         onError={() => <Message label="No se pudieron cargar los TODOs" />}
-        onLoading={() => new Array(3).map((key) => <TodoSkeleton key={key} />)}
+        onLoading={() => newArray(3).map((key) => <TodoSkeleton key={key} />)}
         onEmpty={() => <Message label="Crea tu primer TODO 🌞" />}
         render={(todo) => (
           <TodoItem
