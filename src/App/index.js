@@ -39,22 +39,24 @@ function App() {
         <TodoCounter completed={completedTodos} total={totalTodos} />
         <TodoSearch onChange={setSearchValue} value={searchValue} />
       </TodoHeader>
-      <TodoList>
-        {error && <Message label="No se pudieron cargar los TODOs" />}
-        {loading &&
-          new Array(3).fill().map((key) => <TodoSkeleton key={key} />)}
-        {!loading && todos.length === 0 && (
-          <Message label="Crea tu primer TODO 🌞" />
-        )}
-        {todos.filter(searchTodo(searchValue)).map((todo) => (
+      <TodoList
+        error={error}
+        loading={loading}
+        todos={todos}
+        searchTodo={searchTodo}
+        searchValue={searchValue}
+        onError={() => <Message label="No se pudieron cargar los TODOs" />}
+        onLoading={() => new Array(3).map((key) => <TodoSkeleton key={key} />)}
+        onEmpty={() => <Message label="Crea tu primer TODO 🌞" />}
+        render={(todo) => (
           <TodoItem
             key={todo._id}
             {...todo}
             deleteTodo={deleteTodo}
             completeTodo={completeTodo}
           />
-        ))}
-      </TodoList>
+        )}
+      />
       <Modal state={modalState} toggleModal={toggleModal}>
         <TodoForm addTodo={addTodo} />
       </Modal>
