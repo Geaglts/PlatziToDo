@@ -43,9 +43,14 @@ function App() {
         error={error}
         loading={loading}
         searchedTodos={searchedTodos}
+        totalTodos={totalTodos}
+        searchValue={searchValue}
         onError={() => <Message label="No se pudieron cargar los TODOs" />}
         onLoading={() => newArray(3).map((key) => <TodoSkeleton key={key} />)}
         onEmpty={() => <Message label="Crea tu primer TODO 🌞" />}
+        onEmptySearch={(searchValue) => (
+          <Message label={`No se encontraron tareas con ${searchValue} 🎭`} />
+        )}
         render={(todo) => (
           <TodoItem
             key={todo._id}
