@@ -39,6 +39,7 @@ function App() {
         <TodoCounter completed={completedTodos} total={totalTodos} />
         <TodoSearch onChange={setSearchValue} value={searchValue} />
       </TodoHeader>
+      {/* Example with render props */}
       <TodoList
         error={error}
         loading={loading}

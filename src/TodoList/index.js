@@ -1,5 +1,6 @@
 import "./TodoList.css";
 
+// Example with render props
 function TodoList(props) {
   return (
     <div className="TodoList">
