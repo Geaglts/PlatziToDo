@@ -2,6 +2,8 @@ import "./TodoList.css";
 
 // Example with render props
 function TodoList(props) {
+  const renderFunc = props.children || props.render;
+
   return (
     <div className="TodoList">
       {props.error && props.onError()}
@@ -11,7 +13,8 @@ function TodoList(props) {
         props.totalTodos !== 0 &&
         props.searchedTodos.length === 0 &&
         props.onEmptySearch(props.searchValue)}
-      {props.searchedTodos.map(props.render)}
+      {/* Use render function to render todos */}
+      {props.searchedTodos.map(renderFunc)}
       <ul>{props.children}</ul>
     </div>
   );

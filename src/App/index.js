@@ -52,7 +52,16 @@ function App() {
         onEmptySearch={(searchValue) => (
           <Message label={`No se encontraron tareas con ${searchValue} 🎭`} />
         )}
-        render={(todo) => (
+        // render={(todo) => (
+        //   <TodoItem
+        //     key={todo._id}
+        //     {...todo}
+        //     deleteTodo={deleteTodo}
+        //     completeTodo={completeTodo}
+        //   />
+        // )}
+      >
+        {(todo) => (
           <TodoItem
             key={todo._id}
             {...todo}
@@ -60,7 +69,7 @@ function App() {
             completeTodo={completeTodo}
           />
         )}
-      />
+      </TodoList>
       <Modal state={modalState} toggleModal={toggleModal}>
         <TodoForm addTodo={addTodo} />
       </Modal>
