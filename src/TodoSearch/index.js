@@ -1,6 +1,6 @@
 import "./TodoSearch.css";
 
-function TodoSearch({ onChange, value }) {
+function TodoSearch({ onChange, value, loading }) {
   const onChangeSearchValue = (evt) => {
     onChange(evt.target.value);
   };
@@ -12,6 +12,7 @@ function TodoSearch({ onChange, value }) {
       placeholder="Buscar tarea"
       onChange={onChangeSearchValue}
       value={value}
+      disabled={loading}
     />
   );
 }

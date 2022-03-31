@@ -17,3 +17,7 @@
 .TodoSearch--input::placeholder {
   color: rgba(207, 207, 207, 0.6);
 }
+
+.TodoSearch--input:disabled {
+  opacity: 25%;
+}

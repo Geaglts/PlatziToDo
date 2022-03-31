@@ -36,8 +36,16 @@ function App() {
     <>
       {/* Ejemplo de composición de componentes */}
       <TodoHeader>
-        <TodoCounter completed={completedTodos} total={totalTodos} />
-        <TodoSearch onChange={setSearchValue} value={searchValue} />
+        <TodoCounter
+          completed={completedTodos}
+          total={totalTodos}
+          loading={loading}
+        />
+        <TodoSearch
+          onChange={setSearchValue}
+          value={searchValue}
+          loading={loading}
+        />
       </TodoHeader>
       {/* Example with render props */}
       <TodoList
