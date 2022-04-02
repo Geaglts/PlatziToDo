@@ -14,8 +14,8 @@ function TodoList(props) {
         props.searchedTodos.length === 0 &&
         props.onEmptySearch(props.searchValue)}
       {/* Use render function to render todos */}
-      {props.searchedTodos.map(renderFunc)}
-      <ul>{props.children}</ul>
+      {!props.loading && props.searchedTodos.map(renderFunc)}
+      {/* <ul>{props.children}</ul> */}
     </div>
   );
 }

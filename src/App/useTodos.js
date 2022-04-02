@@ -9,8 +9,10 @@ export function useTodos() {
   const {
     value: todos,
     saveValue: saveTodos,
+    sincronizeStorage: sincronizeTodos,
     loading,
     error,
+    loadValues,
   } = useLocalStorage(STORAGE_NAMES.TODOS, []);
   const [searchValue, setSearchValue] = useState("");
   const [modalState, setModalState] = useState(false);
@@ -18,6 +20,10 @@ export function useTodos() {
 
   const completedTodos = todos.filter((todo) => todo.completed).length;
   const totalTodos = todos.length;
+
+  const loadTodos = () => {
+    loadValues();
+  };
 
   // Filtra los todos cuando cambia el estado del searchValue
   useEffect(() => {
@@ -70,5 +76,7 @@ export function useTodos() {
     setSearchValue,
     toggleModal,
     addTodo,
+    loadTodos,
+    sincronizeTodos,
   };
 }
