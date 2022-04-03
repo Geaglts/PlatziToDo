@@ -1,8 +1,10 @@
 import "./ChangeAlert.css";
 import { Modal } from "../Modal";
-import { withStorageListener } from "./withStorageListener";
+import { useStorageListener } from "./useStorageListener";
 
-function ChangeAlert({ show = false, toggleShow = () => {} }) {
+function ChangeAlert({ sincronize }) {
+  const { storageChange: show, toggleShow } = useStorageListener(sincronize);
+
   if (show) {
     return (
       <Modal blocked={true} state={show}>
@@ -24,6 +26,4 @@ function ChangeAlert({ show = false, toggleShow = () => {} }) {
   return null;
 }
 
-const ChangeAlertWithStorageListener = withStorageListener(ChangeAlert);
-
-export { ChangeAlertWithStorageListener };
+export { ChangeAlert };

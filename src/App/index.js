@@ -8,7 +8,7 @@ import { TodoSearch } from "../TodoSearch";
 import { TodoList } from "../TodoList";
 import { TodoItem } from "../TodoItem";
 import { TodoForm } from "../TodoForm";
-import { ChangeAlertWithStorageListener } from "../ChangeAlert";
+import { ChangeAlert } from "../ChangeAlert";
 
 import { CreateTodoButton } from "../CreateTodoButton";
 import { Message } from "../Message";
@@ -67,7 +67,7 @@ function App() {
       <Modal state={modalState} toggleModal={toggleModal}>
         <TodoForm addTodo={addTodo} />
       </Modal>
-      <ChangeAlertWithStorageListener sincronize={sincronizeTodos} />
+      <ChangeAlert sincronize={sincronizeTodos} />
       <CreateTodoButton onClick={toggleModal} />
     </>
   );
