@@ -1,20 +1,16 @@
 import { useContext } from "react";
 
-import { TodoCounter } from "../TodoCounter";
-import { TodoSearch } from "../TodoSearch";
-import { TodoList } from "../TodoList";
-import { TodoItem } from "../TodoItem";
-import { TodoForm } from "../TodoForm";
-import { CreateTodoButton } from "../CreateTodoButton";
-import { TodoContext } from "../TodoContext";
-import { Modal } from "../Modal";
+import { TodoCounter } from "../components/TodoCounter";
+import { TodoSearch } from "../components/TodoSearch";
+import { TodoItem } from "../components/TodoItem";
+import { CreateTodoButton } from "../components/CreateTodoButton";
+import { Label } from "../components/Label";
+import { TodoList } from "../features/TodoList";
+import { TodoContext } from "../utils/context/TodoContext";
 
-// mook
-import { TodoSkeleton } from "../Skeletons/TodoSkeleton";
+import { AddTodoModal } from "../features/AddTodoModal";
 
-const P = ({ message }) => {
-  return <p style={{ color: "white", textAlign: "center" }}>{message}</p>;
-};
+import { TodoSkeleton } from "../features/TodoSkeleton";
 
 export const AppUI = ({ searchTodo }) => {
   const {
@@ -33,11 +29,11 @@ export const AppUI = ({ searchTodo }) => {
       <TodoCounter />
       <TodoSearch />
       <TodoList>
-        {error && <P message="A ocurrido un error al cargar los todos" />}
+        {error && <Label text="A ocurrido un error al cargar los todos" />}
         {loading &&
-          new Array(3).fill().map((index, key) => <TodoSkeleton key={key} />)}
+          new Array(3).fill().map((_, key) => <TodoSkeleton key={key} />)}
         {!loading && todos.length === 0 && (
-          <P message="Crea tu primer TODO :D" />
+          <Label text="Crea tu primer ToDo 🥞" />
         )}
         {todos.filter(searchTodo(searchValue)).map((todo) => (
           <TodoItem
@@ -48,10 +44,8 @@ export const AppUI = ({ searchTodo }) => {
           />
         ))}
       </TodoList>
-      <Modal state={modalState} toggleModal={toggleModal}>
-        <TodoForm />
-      </Modal>
       <CreateTodoButton onClick={toggleModal} />
+      <AddTodoModal isOpen={modalState} onToggle={toggleModal} />
     </>
   );
 };

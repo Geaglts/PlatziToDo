@@ -1,0 +1,46 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.textarea {
+  width: 100%;
+  color: var(--color-dark);
+  resize: none;
+  height: 375px;
+  font-size: 14pt;
+  font-weight: 400;
+  border: none;
+  outline: 0;
+}
+
+.textarea::placeholder {
+  color: rgba(8, 9, 10, 0.7);
+}
+
+.button {
+  position: absolute;
+  bottom: 10px;
+  left: 99px;
+  width: 100px;
+  height: 35px;
+  font-weight: 900;
+  font-size: 14pt;
+  background-color: white;
+  color: #1f1a38;
+  border: 2px solid #1f1a38;
+  border-radius: 5px;
+  cursor: pointer;
+  padding-bottom: 3px;
+  box-shadow: 3px 3px 5px 1px rgba(31, 26, 56, 0.1);
+  transition: background-color 450ms ease, color 450ms ease,
+    transform 450ms ease-out;
+}
+
+.TodoForm > button:hover {
+  transition: background-color 350ms ease, color 350ms ease,
+    transform 350ms ease-out;
+  background-color: #1f1a38;
+  color: #ead7d1;
+  transform: scale(1.05);
+}

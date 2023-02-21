@@ -1,14 +1,23 @@
+:root {
+  --color-dark: #08090a;
+  --color-white: #ffffff;
+  --color-blue: #009eff;
+  --color-yellow: #f5ee9e;
+  --color-green: #139a43;
+  --color-red: #eb5e55;
+}
+
 * {
+  padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Urbanist", sans-serif;
-  outline: none;
+  font-family: "Roboto", sans-serif;
 }
 
 body {
-  background-color: #1f1a38;
   width: 600px;
   margin: 0 auto;
+  background-color: var(--color-dark);
 }
 
 /* width */

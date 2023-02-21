@@ -1,4 +1,4 @@
-import { TodoProvider } from "../TodoContext";
+import { TodoProvider } from "../utils/context/TodoContext";
 
 import { AppUI } from "./AppUI";
 

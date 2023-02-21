@@ -1,0 +1,22 @@
+.container {
+  background-color: transparent;
+  border: none;
+  height: 40px;
+  cursor: pointer;
+}
+
+.primary {
+  font-size: 14pt;
+  color: var(--color-white);
+  border: 2px solid var(--color-dark);
+  color: var(--color-dark);
+  font-weight: bold;
+  border-radius: 4px;
+  transition: all 450ms ease-in;
+}
+
+.primary:hover {
+  transition: all 350ms ease-out;
+  color: var(--color-blue);
+  border-color: var(--color-blue);
+}

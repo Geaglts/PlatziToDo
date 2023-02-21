@@ -1,0 +1,56 @@
+.container {
+  width: 500px;
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  border-radius: 4px;
+  margin: 0 auto;
+  color: var(--color-dark);
+  background-color: var(--color-white);
+  display: grid;
+  grid-template-columns: 20px 1fr auto;
+  height: 70px;
+}
+
+.status {
+  display: flex;
+  height: 100%;
+  cursor: pointer;
+}
+
+.status:hover {
+  opacity: 0.5;
+}
+
+.no-completed {
+  background-color: var(--color-red);
+}
+
+.completed {
+  background-color: var(--color-green);
+}
+
+.underline {
+  text-decoration: 3px line-through #1f1a38;
+}
+
+.todo {
+  font-size: 14pt;
+  font-weight: bold;
+  color: var(--color-dark);
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+}
+
+.close {
+  color: var(--color-red);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.close > svg:hover {
+  opacity: 0.8;
+}
